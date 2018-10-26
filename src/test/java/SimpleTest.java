@@ -16,7 +16,7 @@ import java.net.URL;
 public class SimpleTest {
 
     private String accessKey = "eyJ4cC51IjozLCJ4cC5wIjoyLCJ4cC5tIjoiTVRVeE5URXdNVFl4T0Rrd01RIiwiYWxnIjoiSFMyNTYifQ.eyJleHAiOjE4NDc3MjA2MjAsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.iO3_E7cnbOwwK-6CfwoSCGTD_2XzTBlt47w_NG5ehks";
-    private String host = "https://uscloud.experitest.com";
+    private String host = "https://uscloud.experitest.com/wd/hub";
     private Integer port = 443;
     protected IOSDriver<IOSElement> driver = null;
     DesiredCapabilities dc = new DesiredCapabilities();
@@ -25,17 +25,20 @@ public class SimpleTest {
     @BeforeTest
     public void setUp() throws MalformedURLException
         {
+            dc.setCapability("reportDirectory", "reports");
+            dc.setCapability("reportFormat", "xml");
             dc.setCapability("testName", "SimpleTest");
             dc.setCapability("accessKey", accessKey);
             dc.setCapability("deviceQuery", "@os='ios' and @category='PHONE'");
+            dc.setCapability("instrumented",true);
             dc.setCapability(MobileCapabilityType.APP, "cloud:com.experitest.ExperiBank");
             dc.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.experitest.ExperiBank");
-            driver = new IOSDriver<>(new URL(host+"/wd/hub"), dc);
-
+            driver = new IOSDriver<>(new URL(host), dc);
         }
 
     @Test
     public void quickStartiOSNativeDemo() {
+
         driver.rotate(ScreenOrientation.PORTRAIT);
         driver.findElement(By.xpath("//*[@id='usernameTextField']")).sendKeys("company");
         driver.hideKeyboard();
@@ -53,6 +56,7 @@ public class SimpleTest {
         WebElement balanceStr = driver.findElement(By.cssSelector("[nodeName=H1]"));
         System.out.println(balanceStr.getText());
         Assert.assertEquals("Your balance is:  100.00$ ", balanceStr.getText());
+
 
     }
 

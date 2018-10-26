@@ -2,13 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="basic" parallel="tests" thread-count="5">
     <test name="TestIOS">
-
+        <parameter name="OS" value="ios"/>
         <classes>
             <class name="SimpleTest"/>
         </classes>
     </test> <!-- Test -->
     <test name="TestIOS2">
-
+        <parameter name="OS" value ="android"/>
         <classes>
             <class name="SimpleTest"/>
         </classes>

@@ -43,9 +43,9 @@ public class TrainingTest {
         driver.rotate(ScreenOrientation.PORTRAIT);
         driver.get("https://www.premierleague.com/stats");
         driver.context("WEBVIEW_1");
-        WebElement player = driver.findElement(By.xpath("//*[@text='EdenHazard']"));
+        WebElement player = driver.findElement(By.xpath("//*[@text='          7      ']"));
         player.click();
-        WebElement age = driver.findElement(By.xpath(("(//*/*[@text and @nodeName='DIV' and @width>0])[36]")));
+        WebElement age = driver.findElement(By.xpath(("//*/*[@text and @nodeName='DIV' and @width>0])[36]")));
         String result = age.getAttribute("text");
         System.out.println(result);
 
