@@ -15,8 +15,8 @@ import java.net.URL;
 
 public class SimpleTest {
 
-    private String accessKey = "yourAccessKey";
-    private String host = "https://yourURL";
+    private String accessKey = "eyJ4cC51IjozLCJ4cC5wIjoyLCJ4cC5tIjoiTVRVeE5URXdNVFl4T0Rrd01RIiwiYWxnIjoiSFMyNTYifQ.eyJleHAiOjE4NDc3MjA2MjAsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.iO3_E7cnbOwwK-6CfwoSCGTD_2XzTBlt47w_NG5ehks";
+    private String host = "https://uscloud.experitest.com";
     private Integer port = 443;
     protected IOSDriver<IOSElement> driver = null;
     DesiredCapabilities dc = new DesiredCapabilities();
@@ -52,7 +52,7 @@ public class SimpleTest {
         driver.context("WEBVIEW_1"); //In Appium we don't need to switch to a selenium Driver: Appium already acts as one in the right context
         WebElement balanceStr = driver.findElement(By.cssSelector("[nodeName=H1]"));
         System.out.println(balanceStr.getText());
-        Assert.assertEquals("Your balance is:  100.00$", balanceStr.getText());
+        Assert.assertEquals("Your balance is:  100.00$ ", balanceStr.getText());
 
     }
 
