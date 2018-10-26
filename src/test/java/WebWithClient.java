@@ -17,8 +17,8 @@ import java.net.URL;
 
 public class WebWithClient {
 
-    private String accessKey = "yourAccessKey";
-    private String host = "https://yourURL";
+    private String accessKey = "eyJ4cC51IjozLCJ4cC5wIjoyLCJ4cC5tIjoiTVRVeE5URXdNVFl4T0Rrd01RIiwiYWxnIjoiSFMyNTYifQ.eyJleHAiOjE4NDc3MjA2MjAsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.iO3_E7cnbOwwK-6CfwoSCGTD_2XzTBlt47w_NG5ehks";
+    private String host = "https://uscloud.experitest.com";
     protected IOSDriver<IOSElement> driver = null;
     DesiredCapabilities dc = new DesiredCapabilities();
 
@@ -44,7 +44,8 @@ public class WebWithClient {
         searchBar.sendKeys(Keys.ENTER);
 
         //See https://docs.experitest.com/display/TD/Additional+Commands
-        driver.executeScript("seetest:client.simulateCapture(\"C:/images/image.jpg\")");
+        driver.executeScript("experitest:client.install(\"cloud:com.experitest.ExperiBank\", \"true\", \"true\")");
+
 
     }
 

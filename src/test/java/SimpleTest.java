@@ -25,12 +25,12 @@ public class SimpleTest {
     @BeforeTest
     public void setUp() throws MalformedURLException
         {
-            dc.setCapability("testName", "Quick Start iOS Native Demo");
+            dc.setCapability("testName", "SimpleTest");
             dc.setCapability("accessKey", accessKey);
             dc.setCapability("deviceQuery", "@os='ios' and @category='PHONE'");
             dc.setCapability(MobileCapabilityType.APP, "cloud:com.experitest.ExperiBank");
             dc.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.experitest.ExperiBank");
-            driver = new IOSDriver<>(new URL("https://uscloud.experitest.com/wd/hub"), dc);
+            driver = new IOSDriver<>(new URL(host+"/wd/hub"), dc);
 
         }
 
