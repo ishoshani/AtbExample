@@ -15,8 +15,8 @@ import java.net.URL;
 
 public class TrainingTest {
 
-    private String accessKey = "yourAccessKey";
-    private String host = "https://yourURL";
+    private String accessKey = "eyJ4cC51IjozLCJ4cC5wIjoyLCJ4cC5tIjoiTVRVeE5URXdNVFl4T0Rrd01RIiwiYWxnIjoiSFMyNTYifQ.eyJleHAiOjE4NDc3MjA2MjAsImlzcyI6ImNvbS5leHBlcml0ZXN0In0.iO3_E7cnbOwwK-6CfwoSCGTD_2XzTBlt47w_NG5ehks";
+    private String host = "https://atb.experitest.com";
     private Integer port = 443;
     protected IOSDriver<IOSElement> driver = null;
     DesiredCapabilities dc = new DesiredCapabilities();
@@ -26,9 +26,8 @@ public class TrainingTest {
         dc.setCapability("testName", "MyTest");
         dc.setCapability("accessKey", accessKey);
         dc.setCapability("deviceQuery", "@os='ios' and @category='PHONE'");
-        dc.setCapability(MobileCapabilityType.APP, "cloud:com.experitest.ExperiBank");
-        dc.setCapability(IOSMobileCapabilityType.BUNDLE_ID, "com.experitest.ExperiBank");
-        driver = new IOSDriver<>(new URL("https://uscloud.experitest.com/wd/hub"), dc);
+        dc.setBrowserName("SAFARI");
+        driver = new IOSDriver<>(new URL("http://localhost:4723/wd/hub"), dc);
 
     }
     //You Task is the following:
@@ -42,12 +41,19 @@ public class TrainingTest {
     @Test
     public void InccompleteTest() {
         driver.rotate(ScreenOrientation.PORTRAIT);
-        //include the steps here:
+        driver.get("https://www.premierleague.com/stats");
+        driver.context("WEBVIEW_1");
+        WebElement player = driver.findElement(By.xpath("//*[@text='EdenHazard']"));
+        player.click();
+        WebElement age = driver.findElement(By.xpath(("(//*/*[@text and @nodeName='DIV' and @width>0])[36]")));
+        String result = age.getAttribute("text");
+        System.out.println(result);
 
     }
 
     @AfterTest
     public void tearDown() {
         driver.quit();
+
     }
 }
